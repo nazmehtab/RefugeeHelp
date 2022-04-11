@@ -1,13 +1,11 @@
 
 # Refugee Help Scheme
 
----
 *A GUI application for Refugee database management support.*
 
 
 ## Description 
 
----
 **The software is made to help refugees coming from different countries to Germany. It provides the following services:**
 - Clothing & Fooding
 - Lodging
@@ -17,7 +15,6 @@
 
 ## Requirements
 
----
 **The repository is designed in Python programming language. The following dependencies are required to be installed:**
 
 - Python >= 3.7 
@@ -31,7 +28,6 @@
 
 ## Files
 
----
 - `README.md`
 - `MainWindow.py`  Frontend interface of the software
 - `info.py`  Information of different pages
@@ -43,8 +39,7 @@
 	
 
 ## Database characteristics
-
----	
+	
 **details_book.db have the following fields:**
 	
 1. first_name: User's first name
