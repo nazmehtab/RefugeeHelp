@@ -40,7 +40,7 @@
 
 ## Database characteristics
 	
-**details_book.db have the following fields:**
+**details table have the following fields:**
 	
 1. first_name: User's first name
 2. last_name : User's last name
