@@ -104,7 +104,7 @@ class MainWindow(object):
         self.btn7 = HoverButton2(root, text='Contact', relief='flat', command=contact, fg="gray")
         self.btn7.place(x=720, y=520)
 
-        # open images to use with label1 of the MainWindow
+        # open images to use with label1 on the MainWindow
         img1 = ImageTk.PhotoImage(Image.open("images/image1.jpg").resize((340, 400), Image.ANTIALIAS))
         img2 = ImageTk.PhotoImage(Image.open("images/image2.jpg").resize((340, 400), Image.ANTIALIAS))
         img3 = ImageTk.PhotoImage(Image.open("images/image3.jpg").resize((340, 400), Image.ANTIALIAS))
@@ -117,7 +117,7 @@ class MainWindow(object):
 
         def next_image():
             """
-            The Method is running image slideshow on MainWindow.
+            The Method is running image slideshow on the MainWindow.
 
             Parameters:
                 img_count(int): an iterator for image count.
@@ -143,6 +143,10 @@ class HoverButton1(Button):
     Args:
         root: The MainWindow Tk root object.
         **kw: Arbitrary keyword argument.
+        
+    Mehtods:
+        on_enter(e): uses event data for the button hover event to change the background of the button.
+        on_leave(e): uses the event data for the button leave event to change the background of the button.
     """
 
     def __init__(self, root, **kw):
@@ -152,7 +156,7 @@ class HoverButton1(Button):
 
     def on_enter(self, e):
         """
-        Functions that use the event data for the button hover event
+        Function that uses the event data for the button hover event
         to change the background of the button.
 
         Args:
@@ -165,7 +169,7 @@ class HoverButton1(Button):
 
     def on_leave(self, e):
         """
-        Functions that use the event data for the button leave event
+        Function that uses the event data for the button leave event
         to change the background of the button.
 
         Args:
@@ -185,6 +189,10 @@ class HoverButton2(Button):
     Args:
         root: The MainWindow Tk root object.
         **kw: Arbitrary keyword argument.
+        
+    Mehtods:
+        on_enter(e): uses event data for the button hover event to change the foreground of the button.
+        on_leave(e): uses the event data for the button leave event to change the foreground of the button.
     """
 
     def __init__(self, root, **kw):
@@ -194,7 +202,7 @@ class HoverButton2(Button):
 
     def on_enter(self, e):
         """
-        Functions that use the event data for the button hover event
+        Function that uses the event data for the button hover event
         to change the foreground of the button.
 
         Args:
@@ -207,7 +215,7 @@ class HoverButton2(Button):
 
     def on_leave(self, e):
         """
-        Functions that use the event data for the button leave event
+        Function that uses the event data for the button leave event
         to change the foreground of the button.
 
         Args:
