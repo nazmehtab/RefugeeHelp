@@ -1,11 +1,39 @@
+# import relevant libraries
+
 from tkinter import *
 from PIL import ImageTk, Image
 from info import *
 from DB import Database
 
+
 class MainWindow(object):
+    """
+    Main Window of the Application.
+
+    Args:
+        root: The MainWindow Tk root object.
+
+    Attributes:
+        bg_pic(PhotoImage): Image attribute of background image.
+        my_canvas(Canvas): Canvas attribute for background image.
+        label1-label9(Label): Display text widgets on the MainWindow.
+        btn1-btn4(Button): Action buttons on the MainWindow.
+        btn5-btn7(Button): Navigation buttons on the MainWindow.
+        img1-img7(PhotoImage): Image attributes of 7 images.
+        img_about(PhotoImage): about image icon placed before 'About us' navigation button.
+        img_info(PhotoImage): information image icon placed before 'Information and help' navigation button.
+        img_contact(PhotoImage): contact image icon placed before 'Contact' navigation button.
+        our_images(list(PhotoImage)): list of 7 images for slideshow on MainWindow.
+
+    Methods:
+        next_image():
+            The Method is running image slideshow on MainWindow.
+    """
 
     def __init__(self, root):
+        """
+        MainWindow class constructor to initialize the root object.
+        """
         self.bg_pic = ImageTk.PhotoImage(Image.open("images/Cologne_bridge.jpg").resize((800, 200), Image.ANTIALIAS))
         self.my_canvas = Canvas(root, width=800, height=200, highlightthickness=0)
         self.my_canvas.pack(fill='both', expand=True)
@@ -13,6 +41,7 @@ class MainWindow(object):
         self.my_canvas.create_text(400, 40, text="@HUMANIA", font="Georgia 20", fill="white")
         self.my_canvas.create_text(400, 65, text="A REFUGEE NGO", font="Georgia 11", fill="white")
 
+        # create labels
         self.label1 = Label(root, font="bold", bd=0)
         self.label1.place(y=200)
 
@@ -49,6 +78,7 @@ class MainWindow(object):
         self.label9.place(x=700, y=520)
         self.label9.config(image=self.img_contact)
 
+        # create buttons
         self.btn1 = HoverButton1(root, text="Clothing and Food Services", font="Georgia 13", fg="white", bg="brown",
                                  command=clothing_food_services, relief="ridge", activebackground="white", width=23)
         self.btn1.place(x=452, y=300)
@@ -74,6 +104,7 @@ class MainWindow(object):
         self.btn7 = HoverButton2(root, text='Contact', relief='flat', command=contact, fg="gray")
         self.btn7.place(x=720, y=520)
 
+        # open images to use with label1 of the MainWindow
         img1 = ImageTk.PhotoImage(Image.open("images/image1.jpg").resize((340, 400), Image.ANTIALIAS))
         img2 = ImageTk.PhotoImage(Image.open("images/image2.jpg").resize((340, 400), Image.ANTIALIAS))
         img3 = ImageTk.PhotoImage(Image.open("images/image3.jpg").resize((340, 400), Image.ANTIALIAS))
@@ -82,53 +113,119 @@ class MainWindow(object):
         img6 = ImageTk.PhotoImage(Image.open("images/image6.jpg").resize((340, 400), Image.ANTIALIAS))
         img7 = ImageTk.PhotoImage(Image.open("images/image6.jpg").resize((340, 400), Image.ANTIALIAS))
 
-        our_images = [img1, img2, img3, img4, img5, img6, img7]
+        our_images = [img1, img2, img3, img4, img5, img6, img7]  # create list of 7 images
 
         def next_image():
+            """
+            The Method is running image slideshow on MainWindow.
+
+            Parameters:
+                img_count(int): an iterator for image count.
+                label1(Label): a label widget to configure image slideshow on MainWindow.
+            """
             global img_count
             if img_count == 7:
-                self.label1.config(image=our_images[0])
+                self.label1.config(image=our_images[0])  # configure the image to the label1
                 img_count = 0
             else:
                 self.label1.config(image=our_images[img_count])
                 img_count += 1
-            root.after(2500, next_image)
+            root.after(2500, next_image)  # tkinter built-in method `after` calling next_image method every 2.5 sec
 
-        next_image()  # initiating call to image rotation
+        next_image()  # initiating call to image rotation on MainWindow
 
 
 class HoverButton1(Button):
+    """
+    HoverButton1 inheriting the Button class that modifies the behaviour
+    of the default action buttons on MainWindow when you hover.
+
+    Args:
+        root: The MainWindow Tk root object.
+        **kw: Arbitrary keyword argument.
+    """
+
     def __init__(self, root, **kw):
         Button.__init__(self, master=root, **kw)
-        self.bind("<Enter>", self.on_enter)
-        self.bind("<Leave>", self.on_leave)
+        self.bind("<Enter>", self.on_enter)  # Bind the enter event to the button
+        self.bind("<Leave>", self.on_leave)  # Bind the leave event to the button
 
     def on_enter(self, e):
+        """
+        Functions that use the event data for the button hover event
+        to change the background of the button.
+
+        Args:
+            e: Event argument.
+
+        Returns:
+            None.
+        """
         self['background'] = '#d6665e'
 
     def on_leave(self, e):
+        """
+        Functions that use the event data for the button leave event
+        to change the background of the button.
+
+        Args:
+            e: Event argument.
+
+        Returns:
+            None.
+        """
         self['background'] = 'brown'
 
 
 class HoverButton2(Button):
+    """
+    HoverButton2 inheriting the Button class that modifies the behaviour
+    of the default navigation buttons on MainWindow when you hover.
+
+    Args:
+        root: The MainWindow Tk root object.
+        **kw: Arbitrary keyword argument.
+    """
+
     def __init__(self, root, **kw):
         Button.__init__(self, master=root, **kw)
-        self.bind("<Enter>", self.on_enter)
-        self.bind("<Leave>", self.on_leave)
+        self.bind("<Enter>", self.on_enter)  # Bind the enter event to the button
+        self.bind("<Leave>", self.on_leave)  # Bind the leave event to the button
 
     def on_enter(self, e):
+        """
+        Functions that use the event data for the button hover event
+        to change the foreground of the button.
+
+        Args:
+            e: Event argument.
+
+        Returns:
+            None.
+        """
         self['foreground'] = 'brown'
 
     def on_leave(self, e):
+        """
+        Functions that use the event data for the button leave event
+        to change the foreground of the button.
+
+        Args:
+            e: Event argument.
+
+        Returns:
+            None.
+        """
         self['foreground'] = 'gray'
 
 
-img_count = 0
+img_count = 0  # global image count variable initialized to 0
 
 if __name__ == "__main__":
-    master = Tk()
-    master.title("@HUMANIA")
-    master.iconbitmap("win_icon.ico")
-    master.geometry("800x550")
-    app = MainWindow(master)
-    master.mainloop()
+    master = Tk()  # create the application's MainWindow
+    # configure the root window
+    master.title("@HUMANIA")  # gives title to the MainWindow
+    master.iconbitmap("win_icon.ico")  # assigns icon image to the MainWindow
+    master.geometry("800x550")  # defines the geometry of the MainWindow
+    app = MainWindow(master)  # call to the MainWindow manager class
+    master.mainloop()  # start the program via main event loop
