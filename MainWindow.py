@@ -41,7 +41,7 @@ class MainWindow(object):
         self.my_canvas.create_text(400, 40, text="@HUMANIA", font="Georgia 20", fill="white")
         self.my_canvas.create_text(400, 65, text="A REFUGEE NGO", font="Georgia 11", fill="white")
 
-        # create labels
+        # create the labels
         self.label1 = Label(root, font="bold", bd=0)
         self.label1.place(y=200)
 
@@ -60,25 +60,28 @@ class MainWindow(object):
         self.label6 = Label(root, text="We are happy to assist you!", font="Georgia 15", fg="brown")
         self.label6.place(x=445, y=220)
 
+        # icon  image for about us navigation button
         self.img_about = ImageTk.PhotoImage(Image.open("images/address.png").resize((15, 20), Image.ANTIALIAS))
 
         self.label7 = Label(root)
         self.label7.place(x=360, y=520)
         self.label7.config(image=self.img_about)
 
+        # icon  image for information and help navigation button
         self.img_info = ImageTk.PhotoImage(Image.open("images/information.png").resize((15, 20), Image.ANTIALIAS))
 
         self.label8 = Label(root)
         self.label8.place(x=512, y=518)
         self.label8.config(image=self.img_info)
 
-        self.img_contact = ImageTk.PhotoImage(Image.open("images/cont.png").resize((15, 20), Image.ANTIALIAS))
+        # icon  image for contact navigation button
+        self.img_contact = ImageTk.PhotoImage(Image.open("images/cont.png").resize((15, 20), Image.ANTIALIAS)) 
 
         self.label9 = Label(root)
         self.label9.place(x=700, y=520)
         self.label9.config(image=self.img_contact)
 
-        # create buttons
+        # create the buttons
         self.btn1 = HoverButton1(root, text="Clothing and Food Services", font="Georgia 13", fg="white", bg="brown",
                                  command=clothing_food_services, relief="ridge", activebackground="white", width=23)
         self.btn1.place(x=452, y=300)
